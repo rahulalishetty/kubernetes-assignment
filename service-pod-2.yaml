@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: service-pod-2
+spec:
+  ports:
+    - name: http
+      port: 4131
+      targetPort: 5000
+  selector:
+    app: pv-pod-app-2
+  type: LoadBalancer

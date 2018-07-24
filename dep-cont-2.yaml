@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: task-pv-dep-2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pv-pod-app-2
+    spec:
+      volumes:
+        - name: task-pv-storage
+          persistentVolumeClaim:
+            claimName: task-pv-claim-1
+      containers:
+        - name: task-pv-container-2
+          image: rahulalishetty/cont2-2:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: "/data"
+              name: task-pv-storage
